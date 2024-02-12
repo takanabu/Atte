@@ -1,36 +1,61 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atte</title>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/">Atte</a>
+        </div>
+        <div class="nav-right">
+            <a href="/">ホーム</a>
+            <a href="/dates">日付一覧</a>
+            <a href="/logout">ログアウト</a>
+        </div>
+    </nav>
+     <div class="container">
+    
+          <h2>{{ Auth::user()->name }}さんお疲れ様です！</h2>
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
-@endsection
+          <div class="row">
+             <div class="column">
+                <div class="card">
+                    <form method="POST" action="/work/start">
+                        @csrf
+                        <button type="submit" class="btn">勤務開始</button>
+                    </form>
+                </div>
+             </div>
+          </div>
+          <div class="column">
+              <div class="card">
+                  <form method="POST" action="/work/end">
+                       @csrf
+                       <button type="submit" class="btn" {{ $attendance && $attendance->start_work ? '' : 'disabled' }}>勤務終了</button>
+                  </form>
+              </div>
+          </div>
 
-@section('content')
-<div class="attendance__alert">
-  // メッセージ機能
-</div>
-
-<div class="attendance__content">
-  <div class="attendance__panel">
-    <form class="attendance__button">
-      <button class="attendance__button-submit" type="submit">勤務開始</button>
-    </form>
-    <form class="attendance__button">
-      <button class="attendance__button-submit" type="submit">勤務終了</button>
-    </form>
-  </div>
-  <div class="attendance-table">
-    <table class="attendance-table__inner">
-      <tr class="attendance-table__row">
-        <th class="attendance-table__header">名前</th>
-        <th class="attendance-table__header">開始時間</th>
-        <th class="attendance-table__header">終了時間</th>
-      </tr>
-      <tr class="attendance-table__row">
-        <td class="attendance-table__item">サンプル太郎</td>
-        <td class="attendance-table__item">サンプル</td>
-        <td class="attendance-table__item">サンプル</td>
-      </tr>
-    </table>
-  </div>
-</div>
-@endsection
+          <div class="column">
+              <div class="card">
+                  <form method="POST" action="/break/start">
+                      @csrf
+                      <button type="submit" class="btn" {{ $break && $break->start_break && !$break->end_break ? 'disabled' : '' }}>休憩開始</button>
+                  </form>
+              </div>
+              <div class="card">
+                  <form method="POST" action="/break/end">
+                      @csrf
+                      <button type="submit" class="btn" {{ $break && $break->start_break && !$break->end_break ? '' : 'disabled' }}>休憩終了</button>
+                  </form>
+             </div>
+         </div>
+         
+          <p>Atte, Inc.</p>
+       </div>
+  </body>
+</html>

@@ -42,10 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function breakTimes()
+        {
+            return $this->hasMany(BreakTime::class);
+        }
 }
 
-$user = User::create([
-    'name' => 'test',
-    'email' => 'dummy@example.com',
-    'password' => Hash::make('password'),
-]);
+

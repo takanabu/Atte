@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended('/index');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
