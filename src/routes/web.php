@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\StampingController;
+use App\Http\Controllers\AttendanceController;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -17,4 +18,6 @@ Route::middleware('auth')->group(function () {
      Route::post('/work/end', [StampingController::class, 'end_work']);
      Route::post('/break/start', [StampingController::class, 'start_break']);
      Route::post('/break/end', [StampingController::class, 'end_break']);
+     Route::get('/attendance', [AttendanceController::class, 'index']);
+     Route::post('/attendance', [AttendanceController::class, 'store']);
 });
