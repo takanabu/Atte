@@ -21,19 +21,28 @@
     <table class="table">
         <thead>
             <tr>
-                <th>勤務開始</th>
-                <th>勤務終了</th>
-                <th>休憩開始</th>
-                <th>休憩終了</th>
-            </tr>
+                <tr>
+                   <th>名前</th>
+                   <th>勤務開始</th>
+                   <th>勤務終了</th>
+                   <th>休憩時間</th>  
+                   <th>勤務時間</th>  
+           </tr>
+               </tr>
         </thead>
         <tbody>
             @foreach ($attendances as $attendance)
+            <?php 
+               // 勤務時間と休憩時間を計算
+               $workHours = (strtotime($attendance->end_work) - strtotime($attendance->start_work))/3600;
+               $breakHours = (strtotime($attendance->end_break) - strtotime($attendance->start_break))/3600;
+            ?>
             <tr>
+                <td>{{ $attendance->user->name }}</td>
                 <td>{{ $attendance->start_work }}</td>
                 <td>{{ $attendance->end_work }}</td>
-                <td>{{ $attendance->start_break }}</td>
-                <td>{{ $attendance->end_break }}</td>
+                <td>{{ number_format($attendance->total_break_time, 2) }} 時間</td> 
+                <td>{{ number_format($workHours, 2) }} 時間</td>
             </tr>
             @endforeach
         </tbody>
