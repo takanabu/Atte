@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class UsersTableSeeder extends Seeder
            'id' => '1',
            'name' => 'テスト太郎',
            'email' => 'test1@test.com',
-           'password' => 'password',
+           'password' => Hash::make('password'),
            'created_at' => '2024-02-12 15:20:58',
            'updated_at' => '2024-02-12 15:20:58',
      ];
@@ -27,7 +28,7 @@ class UsersTableSeeder extends Seeder
            'id' => '2',
            'name' => 'テスト次郎',
            'email' => 'test2@test.com',
-           'password' => 'password',
+           'password' => Hash::make('password'),
            'created_at' => '2024-02-12 15:20:58',
            'updated_at' => '2024-02-12 15:20:58',
      ];
@@ -36,7 +37,7 @@ class UsersTableSeeder extends Seeder
            'id' => '3',
            'name' => 'テスト三郎',
            'email' => 'test3@test.com',
-           'password' => 'password',
+           'password' => Hash::make('password'),
            'created_at' => '2024-02-12 15:20:58',
            'updated_at' => '2024-02-12 15:20:58',
      ];
@@ -45,7 +46,7 @@ class UsersTableSeeder extends Seeder
            'id' => '4',
            'name' => 'テスト四郎',
            'email' => 'test4@test.com',
-           'password' => 'password',
+           'password' => Hash::make('password'),
            'created_at' => '2024-02-12 15:20:58',
            'updated_at' => '2024-02-12 15:20:58',
      ];
@@ -54,7 +55,7 @@ class UsersTableSeeder extends Seeder
            'id' => '5',
            'name' => 'テスト五郎',
            'email' => 'test5@test.com',
-           'password' => 'password',
+           'password' => Hash::make('password'),
            'created_at' => '2024-02-12 15:20:58',
            'updated_at' => '2024-02-12 15:20:58',
      ];
@@ -63,7 +64,7 @@ class UsersTableSeeder extends Seeder
            'id' => '6',
            'name' => 'テスト六郎',
            'email' => 'test6@test.com',
-           'password' => 'password',
+           'password' => Hash::make('password'),
            'created_at' => '2024-02-12 15:20:58',
            'updated_at' => '2024-02-12 15:20:58',
      ];
@@ -72,7 +73,7 @@ class UsersTableSeeder extends Seeder
            'id' => '7',
            'name' => 'テスト七郎',
            'email' => 'test7@test.com',
-           'password' => 'password',
+           'password' => Hash::make('password'),
            'created_at' => '2024-02-12 15:20:58',
            'updated_at' => '2024-02-12 15:20:58',
      ];

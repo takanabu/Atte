@@ -1,11 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atte</title>
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/attendance.css" />
+    <link rel="stylesheet" href="{{ asset('css/attendance.css') }}">
 </head>
 <body>
     <nav class="navbar">
@@ -18,9 +18,6 @@
             <a href="/logout">ログアウト</a>
         </div>
     </nav>
-
-
-
 <div class="container">
     @foreach ($attendances as $attendance)
         <div class="pagination">
@@ -61,9 +58,9 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $attendance->records->links('vendor.pagination.tailwind2') }}
     @endforeach
 </div>
+{{ $attendances->links() }} 
 <p>Atte, Inc.</p>
 </body>
 </html>
