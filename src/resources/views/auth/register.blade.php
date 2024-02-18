@@ -13,11 +13,11 @@
     @csrf
     <div class="form__group">
       <div class="form__group-title">
-        <span class="form__label--item">名前</span>
+        <span class="form__label--item"></span>
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="text" name="name" value="{{ old('name') }}" />
+          <input type="text" name="name" value="{{ old('name') }}" placeholder="名前" />
         </div>
         <div class="form__error">
           @error('name')
@@ -28,11 +28,11 @@
     </div>
     <div class="form__group">
       <div class="form__group-title">
-        <span class="form__label--item">メールアドレス</span>
+        <span class="form__label--item"></span>
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="email" name="email" value="{{ old('email') }}" />
+          <input type="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス" />
         </div>
         <div class="form__error">
           @error('email')
@@ -43,11 +43,11 @@
     </div>
     <div class="form__group">
       <div class="form__group-title">
-        <span class="form__label--item">パスワード</span>
+        <span class="form__label--item"></span>
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="password" name="password" />
+          <input type="password" name="password" placeholder="パスワード" />
         </div>
         <div class="form__error">
           @error('password')
@@ -58,11 +58,11 @@
     </div>
     <div class="form__group">
       <div class="form__group-title">
-        <span class="form__label--item">確認用パスワード</span>
+        <span class="form__label--item"></span>
       </div>
       <div class="form__group-content">
         <div class="form__input--text">
-          <input type="password" name="password_confirmation" />
+          <input type="password" name="password_confirmation" placeholder="確認用パスワード" />
         </div>
       </div>
     </div>
@@ -71,8 +71,8 @@
     </div>
   </form>
   <div class="login__link">
-     アカウントをお持ちの方はこちらから
-    <a class="login__button-submit" href="/login">ログイン</a>
+     <a>アカウントをお持ちの方はこちらから</a>
+     <a class="login__button-submit" href="/login">ログイン</a>
   </div>
 </div>
 @endsection

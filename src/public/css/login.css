@@ -5,7 +5,7 @@
 }
 
 .login-form__heading {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     text-align: center;
 }
 
@@ -45,16 +45,26 @@
 
 .form__button-submit {
     padding: 10px;
-    width: 30%;
+    width: 100%;
     height: 50px;
     border: none;
     border-radius: 3px;
-    background: #000;
+    background: #2a56f5;
     color: #fff;
     cursor: pointer;
 }
 
 .register__link {
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
     text-align: center;
+    color: hsla(240, 3%, 6%, 0.47);
+}
+
+.register__button-submit {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #2a56f5;
+    text-decoration: none;
 }
