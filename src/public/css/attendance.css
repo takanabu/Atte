@@ -1,16 +1,80 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(252, 252, 252);
+    color: hsl(0, 5%, 4%);
+}
+
+.navbar a {
+    color: hsl(0, 0%, 3%);
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f85e;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+h2 {
+    color: #000;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-basis: 50%;
+}
+
+.card {
+    width: 80%;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(248, 248, 248);
+    padding: 20px;
+    text-align: center;
+}
+
+.center-text {
+    margin: 0;
+}
+
 th {
-    background-color: #289ADC;
-    color: white;
+    color: #121010;
     padding: 5px 40px;
 }
 
-tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-}
+tr:nth-child(odd) td {}
 
 td {
     padding: 25px 40px;
-    background-color: #EEEEEE;
     text-align: center;
 }
 
@@ -19,3 +83,22 @@ svg.w-5.h-5 {
     height: 30px;
 }
 
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.next {
+    float: right;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

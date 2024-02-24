@@ -9,31 +9,29 @@
    </head>
    <body>
       <nav class="navbar">
-          <div class="nav-left">
-              <a href="/">Atte</a>
-          </div>
-          <div class="nav-right">
-              <a href="/">ホーム</a>
-              <a href="/dates">日付一覧</a>
-              <a href="/logout">ログアウト</a>
-          </div>
+         <div class="nav-left">
+               <a href="/">Atte</a>
+         </div>
+         <div class="nav-right">
+               <a href="/">ホーム</a>
+               <a href="/dates">日付一覧</a>
+               <a href="/logout">ログアウト</a>
+         </div>
       </nav>
-          <div class="container">
-    
-                 <h2>{{ Auth::user()->name }}さんお疲れ様です！</h2>
-
-                <div class="row">
+         <div class="container">
+             <h2>{{ Auth::user()->name }}さんお疲れ様です！</h2>
+                 <div class="row">
                     <div class="column">
                        <div class="card">
                            <form method="POST" action="/work/start">
                                 @csrf
-                                <button type="submit" class="btn">勤務開始</button>
+                                <button id="startWorkButton" type="submit" class="btn">勤務開始</button>
                           </form>
                        </div>
                        <div class="card">
                            <form method="POST" action="/break/start">
                                @csrf
-                                <button type="submit" class="btn" {{ $break && $break->start_break && !$break->end_break ? 'disabled' : '' }}>休憩開始</button>
+                                <button id="startBreakButton" type="submit" class="btn" {{ session('start_work') ? '' : 'disabled' }}>休憩開始</button>
                            </form>
                        </div>
                    </div>
@@ -41,13 +39,13 @@
                        <div class="card">
                            <form method="POST" action="/work/end">
                                @csrf
-                                <button type="submit" class="btn" {{ $attendance && $attendance->start_work ? '' : 'disabled' }}>勤務終了</button>
+                                <button id="endWorkButton" type="submit" class="btn" {{ session('start_work') ? '' : 'disabled' }}>勤務終了</button>
                            </form>
                        </div>
                        <div class="card">
                            <form method="POST" action="/break/end">
                                @csrf
-                                <button type="submit" class="btn" {{ $break && $break->start_break && !$break->end_break ? '' : 'disabled' }}>休憩終了</button>
+                                <button id="endBreakButton" type="submit" class="btn" {{ session('start_work') ? '' : 'disabled' }}>休憩終了</button>
                            </form>
                        </div>
                    </div>
@@ -55,6 +53,25 @@
                <footer>
                     <p class="center-text">Atte, Inc.</p>
                </footer>
-            </div>
-      </body>
-  </html>
+         </div>
+   </body>  
+         <script>
+             document.getElementById('startWorkButton').addEventListener('click', function() {
+        
+               document.getElementById('startWorkButton').disabled = true;
+
+               document.getElementById('endWorkButton').disabled = false;
+
+               document.getElementById('startBreakButton').disabled = false;
+
+               document.getElementById('endBreakButton').disabled = true;
+              });
+
+             document.getElementById('startBreakButton').addEventListener('click', function() {
+            
+               document.getElementById('startBreakButton').disabled = true;
+
+               document.getElementById('endBreakButton').disabled = false;
+              });
+      </script>
+</html>   

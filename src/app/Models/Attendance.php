@@ -11,6 +11,7 @@ class Attendance extends Model
 
     protected $table = 'attendances';
     protected $fillable = ['user_id', 'start_work', 'end_work', 'created_at', 'updated_at'];
+    protected $dates = ['start_work', 'end_work', 'created_at', 'updated_at'];
 
     public function breakTimes()
       {
@@ -22,5 +23,5 @@ class Attendance extends Model
           return $this->belongsTo(User::class);
       }  
 
-  
+    
 }
