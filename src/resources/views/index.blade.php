@@ -54,24 +54,20 @@
                     <p class="center-text">Atte, Inc.</p>
                </footer>
          </div>
-   </body>  
-         <script>
-             document.getElementById('startWorkButton').addEventListener('click', function() {
-        
-               document.getElementById('startWorkButton').disabled = true;
+   </body>
+   <script>
+     document.getElementById('startWorkButton').addEventListener('click', function() {
+       console.log('startWorkButtonがクリックされました');
+       document.getElementById('startWorkButton').disabled = true;
+       document.getElementById('endWorkButton').disabled = false;
+       document.getElementById('startBreakButton').disabled = false;
+       document.getElementById('endBreakButton').disabled = true;
+     });
 
-               document.getElementById('endWorkButton').disabled = false;
-
-               document.getElementById('startBreakButton').disabled = false;
-
-               document.getElementById('endBreakButton').disabled = true;
-              });
-
-             document.getElementById('startBreakButton').addEventListener('click', function() {
-            
-               document.getElementById('startBreakButton').disabled = true;
-
-               document.getElementById('endBreakButton').disabled = false;
-              });
-      </script>
-</html>   
+     document.getElementById('startBreakButton').addEventListener('click', function() {
+       console.log('startBreakButtonがクリックされました');
+       document.getElementById('startBreakButton').disabled = true;
+       document.getElementById('endBreakButton').disabled = false;
+     });
+   </script>
+</html>

@@ -7,8 +7,6 @@ use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\StampingController;
 use App\Http\Controllers\AttendanceController;
 
-Route::get('/attendance/create', 'AttendanceController@create')->name('attendance.create');
-
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']); 
