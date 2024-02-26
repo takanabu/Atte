@@ -16,6 +16,7 @@ class StampingController extends Controller
         $attendance->start_work = Carbon::now();
         $attendance->save();
 
+
         return redirect('/');
     }
 

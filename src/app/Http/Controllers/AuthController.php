@@ -8,16 +8,16 @@ use App\Models\Attendance;
 use App\Models\BreakTime;
 
 class AuthController extends Controller
-
 {
     public function index()
 {
     $attendance = Attendance::where('user_id', Auth::id())->latest()->first();
     $break = BreakTime::where('user_id', Auth::id())->latest()->first();
-    $start_work = $attendance && $attendance->start_work && !$attendance->end_work;
+    $isWorking = $attendance && $attendance->start_work && !$attendance->end_work;
     $on_break = $break && $break->start_break && !$break->end_break;
-    return view('index', compact('attendance', 'break', 'start_work', 'on_break'));
+    return view('index', compact('attendance', 'break', 'isWorking', 'on_break'));
 }
+
 
 
     public function login(Request $request)
@@ -37,20 +37,45 @@ class AuthController extends Controller
 
   public function startWork(Request $request)
 {
-    // 勤務開始の処理をここに書く...
-    // 例えば、新たな出勤レコードを作成する
+    
     $attendance = new Attendance;
     $attendance->user_id = Auth::id();
     $attendance->start_work = now();
     $attendance->save();
 
-    // 勤務開始フラグをセッションに保存
     $request->session()->put('start_work', true);
 
-    // リダイレクト、レスポンス、またはビューを返す...
     return redirect('/');
 }
 
+public function endWork(Request $request)
+{
+    $attendance = Attendance::where('user_id', Auth::id())->latest()->first();
+    if ($attendance && $attendance->start_work && !$attendance->end_work) {
+        $attendance->end_work = now();
+        $attendance->save();
+    }
+    return redirect('/');
+}
+
+public function startBreak(Request $request)
+{
+    $break = new BreakTime;
+    $break->user_id = Auth::id();
+    $break->start_break = now();
+    $break->save();
+    return redirect('/');
+}
+
+public function endBreak(Request $request)
+{
+    $break = BreakTime::where('user_id', Auth::id())->latest()->first();
+    if ($break && $break->start_break && !$break->end_break) {
+        $break->end_break = now();
+        $break->save();
+    }
+    return redirect('/');
+}
 
 
 }
