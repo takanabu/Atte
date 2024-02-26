@@ -25,13 +25,13 @@
                        <div class="card">
                            <form method="POST" action="/work/start">
                                 @csrf
-                                <button id="startWorkButton" type="submit" class="btn">勤務開始</button>
+                                <button type="submit" class="btn" {{ $isWorking ? 'disabled' : '' }}>勤務開始</button>
                           </form>
                        </div>
                        <div class="card">
                            <form method="POST" action="/break/start">
                                @csrf
-                                <button id="startBreakButton" type="submit" class="btn" {{ session('start_work') ? '' : 'disabled' }}>休憩開始</button>
+                                <button type="submit" class="btn" {{ $isWorking ? '' : 'disabled' }}>休憩開始</button>
                            </form>
                        </div>
                    </div>
@@ -39,13 +39,13 @@
                        <div class="card">
                            <form method="POST" action="/work/end">
                                @csrf
-                                <button id="endWorkButton" type="submit" class="btn" {{ session('start_work') ? '' : 'disabled' }}>勤務終了</button>
+                                <button type="submit" class="btn" {{ $isWorking ? '' : 'disabled' }}>勤務終了</button>
                            </form>
                        </div>
                        <div class="card">
                            <form method="POST" action="/break/end">
                                @csrf
-                                <button id="endBreakButton" type="submit" class="btn" {{ session('start_work') ? '' : 'disabled' }}>休憩終了</button>
+                                <button type="submit" class="btn" {{ $isWorking ? '' : 'disabled' }}>休憩終了</button>
                            </form>
                        </div>
                    </div>
@@ -55,19 +55,4 @@
                </footer>
          </div>
    </body>
-   <script>
-     document.getElementById('startWorkButton').addEventListener('click', function() {
-       console.log('startWorkButtonがクリックされました');
-       document.getElementById('startWorkButton').disabled = true;
-       document.getElementById('endWorkButton').disabled = false;
-       document.getElementById('startBreakButton').disabled = false;
-       document.getElementById('endBreakButton').disabled = true;
-     });
-
-     document.getElementById('startBreakButton').addEventListener('click', function() {
-       console.log('startBreakButtonがクリックされました');
-       document.getElementById('startBreakButton').disabled = true;
-       document.getElementById('endBreakButton').disabled = false;
-     });
-   </script>
 </html>
