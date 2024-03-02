@@ -10,6 +10,7 @@
      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+  <div class="wrapper">
     <nav class="navbar">
         <div class="nav-left">
             <a href="/">Atte</a>
@@ -24,16 +25,12 @@
     <div class="container">
         @foreach ($attendances as $attendance)
             <div class="pagination">
-                <!-- 前へボタン -->
-                <button class="btn btn-primary">
-                    <i class="bi bi-arrow-left"></i>
-                </button>
-
-                <h2 class="date">{{ $attendance->date }}</h2>
-
-                <!-- 次へボタン -->
-                <button class="btn btn-primary">
-                    <i class="bi bi-arrow-right"></i>
+                <button class="btn btn-outline-primary text-primary bg-white">
+                      <i class="bi bi-caret-left-fill"></i>
+                 </button>
+                      <h2 class="date" style="margin-right: 20px;">{{ $attendance->date }}</h2>
+                 <button class="btn btn-outline-primary text-primary bg-white">
+                      <i class="bi bi-caret-right-fill"></i>
                 </button>
 
                 @if ($attendances->hasMorePages())
@@ -61,18 +58,21 @@
                             <td>{{ $record->user->name }}</td>
                             <td>{{ $startWork->format('H:i:s') }}</td> 
                             <td>{{ $endWork->format('H:i:s') }}</td>
-                            <td>{{ number_format($record->total_break_time, 2) }} 時間</td> 
-                            <td>{{ number_format($workHours, 2) }} 時間</td>
+                            <td>{{ number_format($record->total_break_time, 2) }} </td> 
+                            <td>{{ number_format($workHours, 2) }} </td>
                         </tr> 
                     @endforeach
                 </tbody>
             </table>
-            {{ $attendance->records->links('vendor.pagination.tailwind2') }}
         @endforeach
+        <div class="pagination-container">
+            {{ $attendances->links('vendor.pagination.tailwind2') }}
+        </div>
     </div>
     <footer>
         <p class="center-text">Atte, Inc.</p>
     </footer>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </div>
 </body>
 </html>

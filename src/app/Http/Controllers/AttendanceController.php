@@ -11,17 +11,16 @@ class AttendanceController extends Controller
 {
     public function index()
     {   
-
         $attendances = Attendance::with('breakTimes')
             ->select(DB::raw('date(start_work) as date'), DB::raw('count(*) as count'))
             ->groupBy('date')
             ->orderBy('date', 'desc')
-            ->Paginate(1);
+            ->paginate(1);
 
         foreach ($attendances as $attendance) {
             $records = Attendance::with('breakTimes')
                 ->whereDate('start_work', $attendance->date)
-                ->paginate(5); 
+                ->get(); 
 
             $attendance->records = $records;
 
@@ -37,8 +36,5 @@ class AttendanceController extends Controller
         }
 
         return view('attendance', compact('attendances'));
-
-
     }
-
 }
