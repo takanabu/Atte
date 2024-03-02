@@ -14,14 +14,12 @@ class Attendance extends Model
     protected $dates = ['start_work', 'end_work', 'created_at', 'updated_at'];
 
     public function breakTimes()
-      {
-          return $this->hasMany(BreakTime::class);
-      }
+    {
+        return $this->hasMany(BreakTime::class);
+    }
 
     public function user()
-      {
-          return $this->belongsTo(User::class);
-      }  
-
-    
+    {
+        return $this->belongsTo(User::class);
+    }  
 }

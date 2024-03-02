@@ -45,9 +45,9 @@ html {
     /* 2 */
     cursor: default;
     /* 1 */
-
+    
     -webkit-tap-highlight-color: transparent
-        /* 4 */
+    /* 4 */
     ;
     -ms-text-size-adjust: 100%;
     /* 5 */
@@ -396,7 +396,7 @@ textarea {
 [type="search"] {
     outline-offset: -2px;
     /* 2 */
-
+    
     -webkit-appearance: textfield;
     /* 1 */
 }
@@ -435,7 +435,7 @@ textarea {
 ::-webkit-file-upload-button {
     font: inherit;
     /* 2 */
-
+    
     -webkit-appearance: button;
     /* 1 */
 }

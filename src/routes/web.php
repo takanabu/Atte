@@ -13,11 +13,11 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']); 
 
 Route::middleware('auth')->group(function () {
-     Route::get('/', [AuthController::class, 'index']);
-     Route::post('/work/start', [StampingController::class, 'start_work']);
-     Route::post('/work/end', [StampingController::class, 'end_work']);
-     Route::post('/break/start', [StampingController::class, 'start_break']);
-     Route::post('/break/end', [StampingController::class, 'end_break']);
-     Route::get('/attendance', [AttendanceController::class, 'index']);
-     Route::post('/attendance', [AttendanceController::class, 'store']);
+    Route::get('/', [AuthController::class, 'index']);
+    Route::post('/work/start', [StampingController::class, 'start_work']);
+    Route::post('/work/end', [StampingController::class, 'end_work']);
+    Route::post('/break/start', [StampingController::class, 'start_break']);
+    Route::post('/break/end', [StampingController::class, 'end_break']);
+    Route::get('/attendance', [AttendanceController::class, 'index']);
+    Route::post('/attendance', [AttendanceController::class, 'store']);
 });

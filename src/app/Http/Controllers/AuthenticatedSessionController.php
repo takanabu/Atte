@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticatedSessionController extends Controller
-
 {
     public function store(Request $request)
     {

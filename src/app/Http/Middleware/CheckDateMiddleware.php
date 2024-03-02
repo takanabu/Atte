@@ -20,7 +20,6 @@ class CheckDateMiddleware
         if ($user) {
             $attendance = $user->attendances()->latest()->first();
             if ($attendance && $attendance->start_work->isToday() == false) {
-                // 日付が変わったので出勤状態をリセット
                 $attendance->end_work = Carbon::now();
                 $attendance->save();
             }
