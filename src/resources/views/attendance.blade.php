@@ -25,17 +25,13 @@
     <div class="container">
         @foreach ($attendances as $attendance)
             <div class="pagination">
-                <button class="btn btn-outline-primary text-primary bg-white">
-                      <i class="bi bi-caret-left-fill"></i>
-                 </button>
-                      <h2 class="date" style="margin-right: 20px;">{{ $attendance->date }}</h2>
-                 <button class="btn btn-outline-primary text-primary bg-white">
-                      <i class="bi bi-caret-right-fill"></i>
-                </button>
-
-                @if ($attendances->hasMorePages())
-                    <a href="{{ $attendances->nextPageUrl() }}" class="next"></a>
-                @endif
+                <a href="{{ $attendances->previousPageUrl() }}" class="btn btn-outline-primary text-primary bg-white">
+                    <i class="bi bi-caret-left-fill"></i>
+                </a>
+                <h2 class="date" style="margin-right: 20px;">{{ $attendance->date }}</h2>
+                <a href="{{ $attendances->nextPageUrl() }}" class="btn btn-outline-primary text-primary bg-white">
+                    <i class="bi bi-caret-right-fill"></i>
+                </a>
             </div>
             <table class="table">
                 <thead>
