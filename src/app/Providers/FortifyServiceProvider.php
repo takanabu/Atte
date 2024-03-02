@@ -17,32 +17,32 @@ class FortifyServiceProvider extends ServiceProvider
 {
     
     public const HOME = '/';
-
-
+    
+    
     public function register(): void
     {
         //
     }
-
+    
     /**
-     * Bootstrap any application services.
-     */
+    * Bootstrap any application services.
+    */
     public function boot(): void
     {
-          Fortify::createUsersUsing(CreateNewUser::class);
+        Fortify::createUsersUsing(CreateNewUser::class);
         
-          Fortify::registerView(function () {
-             return view('auth.register');
+        Fortify::registerView(function () {
+            return view('auth.register');
         });
-
-          Fortify::loginView(function () {
-             return view('auth.login');
+        
+        Fortify::loginView(function () {
+            return view('auth.login');
         });
-
-          RateLimiter::for('login', function (Request $request) {
-             $email = (string) $request->email;
-
-             return Limit::perMinute(10)->by($email . $request->ip());
+        
+        RateLimiter::for('login', function (Request $request) {
+            $email = (string) $request->email;
+            
+            return Limit::perMinute(10)->by($email . $request->ip());
         });
     }
 }

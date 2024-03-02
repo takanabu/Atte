@@ -25,13 +25,13 @@ class AttendanceController extends Controller
             $attendance->records = $records;
             
             foreach ($records as $record) {
-                $totalBreakTime = 0;
+              $totalBreakTime = 0;
                 foreach ($record->breakTimes as $break) {
-                    $start = new \DateTime($break->start_break);
-                    $end = new \DateTime($break->end_break);
-                    $totalBreakTime += $start->diff($end)->i;  
+                  $start = new \DateTime($break->start_break);
+                  $end = new \DateTime($break->end_break);
+                  $totalBreakTime += $start->diff($end)->i;  
                 }
-                $record->total_break_time = $totalBreakTime / 60;  
+                  $record->total_break_time = $totalBreakTime / 60;  
             }
         }
         

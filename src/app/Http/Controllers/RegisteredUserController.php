@@ -9,7 +9,8 @@ use App\Models\User;
 
 class RegisteredUserController extends Controller
 {
-    public function create() {
+    public function create() 
+    {
         return view('auth.register');
     }
 

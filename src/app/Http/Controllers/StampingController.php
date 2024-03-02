@@ -15,8 +15,6 @@ class StampingController extends Controller
         $attendance->user_id = $request->user()->id; 
         $attendance->start_work = Carbon::now();
         $attendance->save();
-
-
         return redirect('/');
     }
 
@@ -25,8 +23,7 @@ class StampingController extends Controller
         $attendance = Attendance::where('user_id', $request->user()->id)->latest()->first();
         $attendance->end_work = Carbon::now();
         $attendance->save();
-
-         return redirect('/');
+        return redirect('/');
     }
 
     public function start_break(Request $request)
@@ -37,8 +34,7 @@ class StampingController extends Controller
         $break->attendance_id = $attendance->id;
         $break->start_break = Carbon::now();
         $break->save();
-
-         return redirect('/');
+        return redirect('/');
     }
 
     public function end_break(Request $request)
@@ -46,7 +42,6 @@ class StampingController extends Controller
         $break = BreakTime::where('user_id', $request->user()->id)->latest()->first();
         $break->end_break = Carbon::now();
         $break->save();
-
-         return redirect('/');
+        return redirect('/');
     }
 }
